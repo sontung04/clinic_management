@@ -1,0 +1,25 @@
+<% provide(:title, 'Đăng nhập') %>
+
+<div class="log-box">
+  <h2>Đăng nhập</h2>
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+  <% end %>
+
+  <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+
+    <div class="user-box">
+      <%= f.text_field :username, required: true %>
+      <%= f.label :username, "Tên đăng nhập" %>
+    </div>
+
+    <div class="user-box">
+      <%= f.password_field :password, required: true %>
+      <%= f.label :password, "Mật khẩu" %>
+    </div>
+
+    <%= f.submit "Đăng nhập" %>
+  <% end %>
+  <p>Chưa có tài khoản? <%= link_to "Đăng ký ngay", signup_path %></p>
+</div>
+
